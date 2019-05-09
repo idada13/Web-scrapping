@@ -1,8 +1,6 @@
+#Jupyter notebook~
 #!/usr/bin/env python
 # coding: utf-8
-
-# In[202]:
-
 
 import requests
 from bs4 import BeautifulSoup
@@ -17,16 +15,6 @@ all = soup.find_all("div",{"class" : "listing-results-wrapper"})
 all[0].find("a", {"class": "listing-results-price"}).text.replace("\n","").replace(" ", "")
 
 page_nr=soup.find_all("div",{"class": ""})
-
-
-# In[203]:
-
-
-all
-
-
-# In[218]:
-
 
 l=[]
 base_url="https://www.zoopla.co.uk/to-rent/property/caerphilly-county/?identifier=caerphilly-county&q=Caerphilly&radius=0&pn="
@@ -60,29 +48,8 @@ for page in range(1,3):
             d["Reception"] = None
         l.append(d)
 
-
-# In[219]:
-
-
 import pandas as pd
 df=pandas.DataFrame(l)
 pd.options.display.float_format = '£{:,.2f}'.format
 
-
-# In[220]:
-
-
-df
-
-
-# In[221]:
-
-
 df.to_csv("Output.csv")
-
-
-# In[ ]:
-
-
-
-
